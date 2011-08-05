@@ -36,7 +36,7 @@ h1 { color: #444; font-size: 3em; font-weight: normal; margin: 0 0 1em 0; paddin
 <ul id="nav">
   <li><?php echo anchor('simpleform', 'Form Demo'); ?></li>
   <li><?php echo anchor('simpleform/db_form', 'Generate from database table'); ?></li>
-  <li><?php echo anchor('https://github.com/eoinmcg/simpleform/blob/master/README.md', 'Docs'); ?></li>
+  <li><?php echo anchor('https://github.com/eoinmcg/simpleform/blob/master/README.md#readme', 'Docs'); ?></li>
 </ul
 
 
