@@ -1,0 +1,323 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+
+<style type="text/css" media="screen">
+
+body { background-color: #fff; margin: 40px; width: 80em; font: 13px/20px normal Helvetica, Arial, sans-serif; color: #4F5155; text-align: left; }
+a { color: #003399; background-color: transparent; font-weight: normal; }
+
+h1 { color: #444; font-size: 3em; font-weight: normal; margin: 0 0 1em 0; padding: 0.5em 0; text-align: center; text-shadow: 1px 2px rgba(0,0,0,0.1); }
+
+</style>
+
+</head>
+<body>
+
+<h1>Simpleform - a Codeigniter helper</h1>
+
+<h2>This helper aims to address the dull, repeatitive but vital nature of generating forms.</h2>
+
+<h2>Why use Simpleform?</h2>
+
+<ul>
+<li>Very little code is needed to generate forms</li>
+<li>Forms are accessible, valid, nicely formatted and easily customised with CSS</li>
+<li>Simple to prepopulate form and automatically update with $&#95;POST values.</li>
+
+<li>Generate form directly from database table</li>
+<li>Easy to add dates</li>
+<li>If the form has been validated, error messages will be automatically be 
+prepended to the form and incorrect fields highlighted</li>
+</ul>
+
+<h2>Installing</h2>
+
+<p>Merge the application folder with your Codeigniter application folder.
+The <code>assets</code> folder contains sample images, css and javascript ,used in the demo
+Files needed:</p>
+
+<ol>
+<li><p><em>application/helpers/simpleform_helper.php</em> Required. Collection of helper 
+functions.</p></li>
+<li><p><em>application/libraries/MY&#95;Form&#95;Validation.php</em> Optional. If included will
+highlight required fields as set with the form validation library.</p></li>
+<li><p><em>application/controllers/simpleform.php</em> Demo controller.</p></li>
+<li><p><em>application/views/</em> Various views used in the demo.</p></li>
+
+</ol>
+
+<p>This helper is loaded using the following code:
+<code>$this-&gt;load-&gt;helper('simpleform');</code></p>
+
+<p>Assuming you install to localhost/codeigniter you can see a demo at
+<a href="http://localhost/codeigniter/index.php/simpleform">http://localhost/codeigniter/index.php/simpleform</a></p>
+
+<h2>At a glance</h2>
+
+<pre><code>&lt;?php
+  echo sf_form_open();  
+  echo sf_fieldset_open('Your Details');
+  echo sf_form_input('name');
+  echo sf_form_input('email'); 
+  echo sf_date('dob', 'Date of Birth', FALSE, FALSE, TRUE, FALSE); 
+  echo sf_checkbox('terms', '&amp;nbsp;', FALSE, 'I agree to the &lt;a href="#"&gt;terms and conditions&lt;/a&gt; of this service'); 
+  echo sf_fieldset_close();
+  echo sf_form_close('Sign me up!');
+
+</code></pre>
+
+<p>Will result in the following form</p>
+
+<p><img src="https://github.com/eoinmcg/simpleform/blob/master/screenshot.png" alt="Screenshot" /></p>
+
+<p>If you are using the form validation class required fields will be highlighted
+and error messages shown.</p>
+
+<h2>Function reference</h2>
+
+<h4>sf&#95;form&#95;open($action = FALSE, $attributes = FALSE, $allow&#95;files = FALSE, $hide&#95;error&#95;msg = FALSE)</h4>
+
+<p>Wrapper for CIs form&#95;open, will also prepend and validation errors.</p>
+
+<p>$action (string)
+:   URL where form is submitted. Leave blank to send to current page.</p>
+
+<p>$attributes (array)
+:   array of attributes for the &lt;form&#62; tag. e.g. <code>array('class' =&gt; 'form_class')</code></p>
+
+<p>$allow&#95;files (bool)
+:   toggles the mulitpart attribute, necessary for uploading files </p>
+
+<p>$hide&#95;error&#95;msg (bool)
+:   if TRUE will not prepend the form validation error message   </p>
+
+<h4>sf&#95;form&#95;close($val = 'Send', $accesskey = FALSE)</h4>
+
+<p>Generate submit button. Wrapped in div.submit</p>
+
+<p>$val (string)
+:   Text displayed on the submit button</p>
+
+<p>$accesskey (string)
+:   Accesskey for submitting the form</p>
+
+<h4>sf&#95;fieldset&#95;open($legend, $class='')</h4>
+
+<p>Open fieldset</p>
+
+<p>$legend (string)
+:   Text for the legend tag</p>
+
+<p>$class (string)
+:   CSS class</p>
+
+<h4>sf&#95;fieldset&#95;close()</h4>
+
+<p>Close fieldset</p>
+
+<h4>sf&#95;input($name, $label = FALSE, $val='', $note=FALSE, $small=FALSE)</h4>
+
+<p>Creates a text input field wrapped in div served with an optional note.
+Error class will be added if fails validations.</p>
+
+<p>$name (string)
+:   name attribute of input tag</p>
+
+<p>$label (string)
+:   Text for label tag. If not given it will use the name attribute</p>
+
+<p>$val (string)
+:   Prepopulate with value. Will be overridden if a post key exists with the
+    same name</p>
+
+<p>$note (string)
+:   Add additional expanatory text under the input</p>
+
+<p>$small (string)
+:   Sets a CSS class of <code>small</code>. Useful for inputting short numbers.</p>
+
+<h4>sf&#95;password($name, $label = FALSE, $val='', $note=FALSE)</h4>
+
+<p>Password Input Field. Wrapped in div, served with optional note and error if
+fails validations</p>
+
+<p>$name (string)
+:   name attribute of input tag</p>
+
+<p>$label (string)
+:   Text for label tag. If not given it will use the name attribute</p>
+
+<p>$val (string)
+:   Prepopulate with value. Will be overridden if a post key exists with the
+    same name</p>
+
+<p>$note (string)
+:   Add additional expanatory text under the input</p>
+
+<h4>sf&#95;hidden($name, $val='')</h4>
+
+<p>Hidden Input Field. Wrapped in div with hidden class.</p>
+
+<p>$name (string)
+:   name attribute of input tag</p>
+
+<p>$val (string)
+:   Prepopulate with value. Will be overridden if a post key exists with the
+    same name</p>
+
+<h4>sf&#95;textarea($name, $label = FALSE, $val='', $note=FALSE, $class='')</h4>
+
+<p>With optional note and error class added in case of validation fail</p>
+
+<p>$name (string)
+:  Textarea name </p>
+
+<p>$label (string)
+:   Text for label tag. If not given it will use the name attribute</p>
+
+<p>$val (string)
+:   Prepopulate with value. Will be overridden if a post key exists with the
+    same name</p>
+
+<p>$note (string)
+:   Add additional expanatory text under the input</p>
+
+<p>$class (string)
+:   CSS class</p>
+
+<h4>sf&#95;checkbox($name, $label = FALSE, $val='', $note = FALSE)</h4>
+
+<p>Input type checkbox, wrapped in div, optional note and error class if validation fail</p>
+
+<p>$name (string)
+:  Input name attribute </p>
+
+<p>$label (string)
+:   Text for label tag. If not given it will use the name attribute</p>
+
+<p>$val (string)
+:   Prepopulate with value. Will be overridden if a post key exists with the
+    same name</p>
+
+<p>$note (string)
+:   Add additional expanatory text under the input</p>
+
+<h4>sf&#95;radio($name, $label = FALSE, $options = array(), $val = FALSE, $note = FALSE)</h4>
+
+<p>Creates a group of radio buttons from array
+ Wrapped in div, served with optional note and error</p>
+
+<p>$name (string)
+:  Input name attribute </p>
+
+<p>$label (string)
+:   Text for label tag. If not given it will use the name attribute</p>
+
+<p>$options (array)
+:   Key value pairs for radio buttons   </p>
+
+<p>$val (string)
+:   Preset value attribute. pass a a comma delimited string. Will be
+    overridden by $_POSTed values.</p>
+
+<p>$note (string)
+:   Add additional expanatory text under the input</p>
+
+<h4>sf&#95;select($name, $label = FALSE, $options = array(), $val = FALSE, $note = FALSE)</h4>
+
+<p>Creates a select dropdown from array
+ Wrapped in div, served with optional note and error</p>
+
+<p>$name (string)
+:  Input name attribute </p>
+
+<p>$label (string)
+:   Text for label tag. If not given it will use the name attribute</p>
+
+<p>$options (array)
+:   Key value pairs for select option tags</p>
+
+<p>$val (string)
+:   Preset value attribute. Will be overridden by $&#95;POSTed values.</p>
+
+<p>$note (string)
+:   Add additional expanatory text under the input</p>
+
+<h4>sf&#95;multi&#95;select($name, $label = FALSE, $options = array(), $val='', $note=FALSE)</h4>
+
+<p>Creates a list of checkboxes from array
+ Wrapped in div, served with optional note and error</p>
+
+<p>$name (string)
+:  Input name attribute </p>
+
+<p>$label (string)
+:   Text for label tag. If not given it will use the name attribute</p>
+
+<p>$options (array)
+:   Key value pairs for checkbox tags</p>
+
+<p>$val (string)
+:   Preset value attribute. pass a a comma delimited string. Will be
+    overridden by $_POSTed values.</p>
+
+<p>$note (string)
+:   Add additional expanatory text under the input</p>
+
+<h4>sf&#95;date($name, $label = FALSE, $date = FALSE, $year&#95;range = FALSE,                   $set&#95;blank = FALSE, $show&#95;hours&#95;mins = FALSE)</h4>
+
+<p>Generates a select fields for day month year. Hours and minutes can be
+ optionally added</p>
+
+<p>$name (string)
+:  Input name attribute </p>
+
+<p>$label (string)
+:   Text for label tag. If not given it will use the name attribute</p>
+
+<p>$date (int)
+:  Preset date with UNIX timestamp </p>
+
+<p>$year&#95;range (array)
+:  Year to start and end. e.g. <code>array('2000', '2020')</code> year range is from 2000
+  to 2020</p>
+
+<p>$set&#95;blank (bool)
+:  If TRUE starts with a blank date </p>
+
+<p>$show&#95;hours&#95;mins (bool)
+:  If True adds 2 extra fields for hours and minutes</p>
+
+<h4>sf&#95;db&#95;table($table, $data = array(), $ignore = array(), $show&#95;primary&#95;key = FALSE)</h4>
+
+<p>Creates a form based on a table (MySQL only)
+Will try to guess which type of form input to generate:</p>
+
+<ul>
+<li>int, with a length of 1 = checkbox</li>
+
+<li>int, with a length of 11 = date</li>
+<li>text or varchar >= 512 = textarea</li>
+<li>varchar with name <em>pass</em> or <em>password</em> = input password</li>
+<li>varchar = input text (default)</li>
+</ul>
+
+<p>$table (string)
+:   Name of table</p>
+
+<p>$data (array)
+:   prepopulate the form</p>
+
+<p>$ignore (array)
+:   fields not too include in the form</p>
+
+<p>$show&#95;primary&#95;key (bool)
+:   Whether to display the primary key in the form.
+    If FALSE will include as a hidden form field </p>
+
+
+</body>
+</html>

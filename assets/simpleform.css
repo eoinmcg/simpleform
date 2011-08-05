@@ -1,0 +1,40 @@
+
+form { display: block; margin: 1em auto; width: 600px; padding: 10px; text-align: left; background: #fff; }
+form div { display: block; clear: left;  margin: 0 0 10px 0; background: transparent; border-bottom: 0px solid #efefef; padding: 2px 4px 4px 4px; border-radius: 5px;}
+form div.active, form div.row_error.active { background: #E6E6F6 !important; }
+form div.row { display: block; clear: left; }
+form div.row_error { background: #FBE6F2 !important; }
+form div.radiocheck { padding: 0 !important; margin: 0 0 .8em 115px; background: transparent !important; }
+form div.hidden { display: none !important; }
+form div.hide { border: 0 !important; }
+form label {width: 115px; float: left; font-size: 1.1em;  }
+form textarea {width: 405px; border: 1px solid #777; }
+form div img { display: block; float: left; clear: left; margin: 10px 10px 10px 115px; max-width: 120px; }
+
+form input[type="text"] { width: 400px !important; border: 1px solid #777; padding: 2px;  }
+form input[type="password"] { width: 400px !important; border: 1px solid #777; padding: 2px;  }
+form input.small { width: 4em !important;  }
+form input.button { width: auto; }
+form input.image { margin: 20px 0 0 0; }
+form div.checkbox p.note { display: inline-block; float: none; margin-left: 0; }
+form span.required { font-weight: bold; color: #900; }
+
+form fieldset { margin-bottom: 2em; border: none; background: #F8F8FF; border-radius: 5px; box-shadow: 0 0 1px rgba(0,0,0,0.2); }
+form fieldset legend { font-size: 1.4em; font-style: italic; padding: .5em 0; margin-bottom: 1em; opacity: 0.7; text-shadow: 1px 2px rgba(0,0,0,0.05);}
+form fieldset.collapsible legend { background: url(../i/open.png) 0 50% no-repeat; padding-left: 1em; }
+form fieldset.collapsible.closed legend { background: url(../i/closed.png) 0 50% no-repeat; padding-left: 1em; }
+form fieldset.collapsible legend:hover { cursor: pointer; text-decoration: underline; }
+
+form div.submit { display: block; float: left; clear: both; width: 100%; margin: 1em 0; }
+form div.submit.active { background: #fff !important; }
+form div.submit input { padding: 10px 3em !important; margin-left: 115px; background: #477e14; color: #fff; border: 0; border-radius: 5px; font-size: 1.4em; text-shadow: 1px 2px rgba(0,0,0,0.5); box-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
+form input[type="submit"]:hover, form input[type="submit"]:focus { background: #274a05; cursor: pointer; }
+
+form div p.note { color: #888; font-style: italic; display: block; float: left;  margin: 0 0 0 115px; }
+form div.note { font-style: italic; }
+form img.captcha { padding: 0; margin: 0; }
+
+.error { background: #FBE6F2 url(../i/error.png) 5px 5px no-repeat; border: 1px solid #D893A1; color: #333; margin: 10px 0 20px; padding: 10px; }
+.error p { margin: 0; padding: 0 0 0 2em; }
+
+
