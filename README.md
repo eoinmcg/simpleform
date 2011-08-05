@@ -48,9 +48,7 @@ Assuming you install to localhost/codeigniter you can see a demo at
       echo sf_form_close('Sign me up!');
 Will result in the following form
 
-![Screenshot](https://github.com/eoinmcg/simpleform/blob/master/screenshot.png)
-
-![Screenshot](http://localhost/simpleform/screenshot.png)
+![Screenshot](https://github.com/eoinmcg/simpleform/raw/master/screenshot.png)
 
 If you are using the form validation class required fields will be highlighted
 and error messages shown.
