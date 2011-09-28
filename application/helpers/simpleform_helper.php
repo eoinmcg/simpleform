@@ -715,7 +715,7 @@ function _sf_open_row($name = FALSE, $class = '', $type = FALSE)
 	// work out the when to apply the error class
 	// NOTE: this may break in future versions of CI if form_validation->_field_data is indeed made private
 	$is_required = (isset($CI->form_validation)
-					&& array_key_exists($name, $CI->form_validation->_field_data))
+					&& $CI->form_validation->is_required($name))
 		? TRUE : FALSE;
 
 	$error_msg = '';

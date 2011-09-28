@@ -41,6 +41,22 @@ class MY_Form_validation extends CI_Form_validation {
 
 	}
 
+
+	/**
+	 * Checks if field is required
+	 *
+	 * @access public
+	 * @param string
+	 * @return bool
+	 */
+	public function is_required($name)
+	{
+
+		return array_key_exists($name, $this->_field_data);
+
+	}
+
+
 }
 
 
